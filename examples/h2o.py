@@ -1,6 +1,11 @@
 from pyscf import gto, dft, scf
-import gw_ac
-import gw_cd
+from GW.mol import gw_ac
+from GW.mol import gw_cd
+'''
+Check PySCF dev branch
+from pyscf.gw import gw_ac
+from pyscf.gw import gw_cd
+'''
 
 mol = gto.Mole()
 mol.verbose = 4
@@ -23,9 +28,16 @@ gw.kernel()
 print(gw.mo_energy)
 
 # solve linearized QP equation
+gw = gw_ac.GWAC(mf)
 gw.linearized = True
 gw.kernel()
 print(gw.mo_energy)
+
+# frozen O-1s core
+gw = gw_ac.GWAC(mf)
+gw.frozen = 1
+gw.kernel()
+print (gw.mo_energy)
 
 # GW-CD
 gw = gw_cd.GWCD(mf)

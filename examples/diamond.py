@@ -1,8 +1,13 @@
 from pyscf.pbc import gto, dft, scf, df
 from pyscf.pbc.lib import chkfile
 import os
-import krgw_ac
-import krgw_cd
+from GW.pbc import krgw_ac
+from GW.pbc import krgw_cd
+'''
+Check PySCF dev branch
+from pyscf.pbc.gw import krgw_ac
+from pyscf.pbc.gw import krgw_cd
+'''
 
 # This example takes a few minutes
 cell = gto.Cell()
